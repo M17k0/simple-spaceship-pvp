@@ -12,6 +12,12 @@ BORDER = pygame.Rect(WIDTH // 2 - 5, 0, 10, HEIGHT)
 
 FONT = pygame.font.SysFont("arial", 40)
 
+MIDDLE_Y_P1 = BORDER.x // 2 
+MIDDLE_X_P1 = HEIGHT // 2
+
+MIDDLE_Y_P2 = BORDER.x + BORDER.x // 2 
+MIDDLE_X_P2 = HEIGHT // 2
+
 def draw_screen(player1, player2):
     WINDOW.blit(BACKGROUND, (0, 0))
     pygame.draw.rect(WINDOW, "black", BORDER)
