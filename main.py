@@ -58,7 +58,6 @@ def handle_bullets(p1_bullets, p2_bullets, p1, p2):
         if bullet.x > WIDTH:
             p1_bullets.remove(bullet)
 
-
     for bullet in p2_bullets:
         bullet.x -= BULLETS_VELLOCITY
 
