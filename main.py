@@ -12,7 +12,7 @@ def main():
     clock = pygame.time.Clock()
     run = True
     while run:
-        clock.tick(FPS)  
+        clock.tick(FPS)
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 run = False
@@ -24,15 +24,15 @@ def main():
                     player2.add_bullets()
 
             if event.type == pygame.USEREVENT + 2:
-                player1.health -= 1
+                player1.get_hit()
             if event.type == pygame.USEREVENT + 1:
-                player2.health -= 1
+                player2.get_hit()
         
         if player1.health <= 0:
-            draw_winner("P2 WINS")
+            draw_winner("Player 2 WINS")
             run = False
         if player2.health <= 0:
-            draw_winner("P1 WINS")
+            draw_winner("Player 1 WINS")
             run = False
 
         keys = pygame.key.get_pressed()

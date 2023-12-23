@@ -17,3 +17,6 @@ INITIAL_Y_P1 = HEIGHT // 2
 
 INITIAL_X_P2 = WIDTH // 2 + WIDTH //4
 INITIAL_Y_P2 = HEIGHT // 2
+
+BULLET_FIRE_MP3 = os.path.join("assets", "fire.mp3")
+BULLET_HIT_MP3 = os.path.join("assets", "hit.mp3")

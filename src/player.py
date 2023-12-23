@@ -2,11 +2,16 @@ import pygame
 
 from .config import HEIGHT, WIDTH
 from .screen import BORDER
+from src.config import BULLET_FIRE_MP3, BULLET_HIT_MP3 
+
+BULLET_FIRE_SOUND = pygame.mixer.Sound(BULLET_FIRE_MP3)
+BULLET_HIT_SOUND = pygame.mixer.Sound(BULLET_HIT_MP3)
 
 class Player:
     MAX_BULLETS = 3
     PLAYER_VELLOCITY = 5
     BULLETS_VELLOCITY = 8
+    
     def __init__(self, x, y, width, height, image_path, rotate_angle, player_number):
         self.rect = pygame.Rect(x, y, width, height)
         self.image = pygame.transform.rotate(pygame.transform.scale(pygame.image.load(image_path), (width, height)), rotate_angle)
@@ -20,14 +25,20 @@ class Player:
     def add_bullets(self):
         if self.player_number == 1 and len(self.bullets) < 3:
             bullet = pygame.Rect(self.rect.x + self.rect.width, self.rect.y + self.rect.height // 2 - 2, 10, 5)
+            BULLET_FIRE_SOUND.play()
             self.bullets.append(bullet)
         elif self.player_number == 2 and len(self.bullets) < 3:
             bullet = pygame.Rect(self.rect.x, self.rect.y + self.rect.height // 2 - 2, 10, 5)
+            BULLET_FIRE_SOUND.play()
             self.bullets.append(bullet)
 
     def draw_bullets(self, screen):
         for bullet in self.bullets:
             pygame.draw.rect(screen, "white", bullet)
+
+    def get_hit(self):
+        BULLET_HIT_SOUND.play()
+        self.health -= 1
 
     @staticmethod
     def handle_movement(player1, player2, keys):

@@ -1,8 +1,10 @@
 import pygame
+pygame.mixer.init()
+pygame.init()
 
 from .config import HEIGHT, WIDTH, BACKGROUND_IMAGE
+from src.config import BULLET_FIRE, BULLET_HIT 
 
-pygame.init()
 WINDOW = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("Spaceship battle")
 
@@ -12,11 +14,8 @@ BORDER = pygame.Rect(WIDTH // 2 - 5, 0, 10, HEIGHT)
 
 FONT = pygame.font.SysFont("arial", 40)
 
-MIDDLE_Y_P1 = BORDER.x // 2 
-MIDDLE_X_P1 = HEIGHT // 2
-
-MIDDLE_Y_P2 = BORDER.x + BORDER.x // 2 
-MIDDLE_X_P2 = HEIGHT // 2
+BULLET_FIRE_SOUND = pygame.mixer.Sound(BULLET_FIRE)
+BULLET_HIT_SOUND = pygame.mixer.Sound(BULLET_HIT)
 
 def draw_screen(player1, player2):
     WINDOW.blit(BACKGROUND, (0, 0))
