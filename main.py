@@ -27,13 +27,6 @@ def main():
                 player1.get_hit()
             if event.type == pygame.USEREVENT + 1:
                 player2.get_hit()
-        
-        if player1.health <= 0:
-            draw_winner("Player 2 WINS")
-            run = False
-        if player2.health <= 0:
-            draw_winner("Player 1 WINS")
-            run = False
 
         keys = pygame.key.get_pressed()
         Player.handle_movement(player1, player2, keys)
@@ -41,6 +34,13 @@ def main():
         Player.handle_bullets(player1, player2)
 
         draw_screen(player1, player2)
+
+        if player1.health <= 0:
+            draw_winner("Player 2 WINS")
+            run = False
+        if player2.health <= 0:
+            draw_winner("Player 1 WINS")
+            run = False
 
     pygame.quit()
 

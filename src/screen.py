@@ -3,7 +3,6 @@ pygame.mixer.init()
 pygame.init()
 
 from .config import HEIGHT, WIDTH, BACKGROUND_IMAGE
-from src.config import BULLET_FIRE, BULLET_HIT 
 
 WINDOW = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("Spaceship battle")
@@ -14,12 +13,9 @@ BORDER = pygame.Rect(WIDTH // 2 - 5, 0, 10, HEIGHT)
 
 FONT = pygame.font.SysFont("arial", 40)
 
-BULLET_FIRE_SOUND = pygame.mixer.Sound(BULLET_FIRE)
-BULLET_HIT_SOUND = pygame.mixer.Sound(BULLET_HIT)
-
 def draw_screen(player1, player2):
     WINDOW.blit(BACKGROUND, (0, 0))
-    pygame.draw.rect(WINDOW, "black", BORDER)
+    pygame.draw.rect(WINDOW, "white", BORDER)
 
     p1_health_text = FONT.render(f"HEALTH: {player1.health}", 1, "white")
     p2_health_text = FONT.render(f"HEALTH: {player2.health}", 1, "white")
@@ -35,7 +31,7 @@ def draw_screen(player1, player2):
     pygame.display.update()
 
 def draw_winner(text):
-    draw_text = FONT.render(text, 1, "white")
+    draw_text = FONT.render(text, 1, "red")
     WINDOW.blit(draw_text, (WIDTH // 2 - draw_text.get_width() // 2, HEIGHT // 2 - draw_text.get_height() // 2))
     pygame.display.update()
     pygame.time.delay(5_000)
